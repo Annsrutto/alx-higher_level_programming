@@ -13,6 +13,7 @@ class Rectangle:
         Rectangle.number_of_instances += 1
         self.width = width
         self.height = height
+        self.print_symbol = Rectangle.print_symbol
 
     @property
     def width(self):
@@ -58,7 +59,7 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return ""
         symbol = str(self.print_symbol)
-        return "\n".join(["#" * self.__width for _ in range(self.__height)])
+        return "\n".join([symbol * self.__width for _ in range(self.__height)])
 
     def __repr__(self):
         """ Return the 'official' string representation of the rectangle."""
