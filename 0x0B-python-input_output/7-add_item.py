@@ -11,12 +11,14 @@ def save_to_json_file(my_obj, filename):
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(my_obj, f)
 
+
 def load_from_json_file(filename):
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
         return []
+
 
 if __name__ == "__main__":
     filename = "add_item.json"
