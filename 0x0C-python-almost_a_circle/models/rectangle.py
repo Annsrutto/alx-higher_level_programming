@@ -43,6 +43,11 @@ class Rectangle(Base):
         """returns the current square area"""
         return self.__width * self.__height
 
+    def display(self):
+        """ Prints the Rectangle instance with the '#'"""
+        for _ in range(self.height):
+            print("#" * self.width)
+
     @property
     def x(self):
         return self.__x
