@@ -16,10 +16,12 @@ class Square(Rectangle):
             self.id, self.x, self.y, self.width)
 
     @property
+    """getter for size."""
     def size(self):
         return self.__size
 
     @size.setter
+    """setter for size."""
     def size(self, value):
         if type(value) is not int:
             raise TypeError("width must be an integer")
