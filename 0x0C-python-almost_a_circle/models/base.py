@@ -4,6 +4,7 @@
 import json
 import os
 
+
 class Base:
     """Base class with a private classs attritube"""
     __nb_objects = 0
