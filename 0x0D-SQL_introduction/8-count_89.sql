@@ -1,2 +1,2 @@
 -- displays the number of records in the table.
-SELECT FROM first_table WHERE id = 89;
+SELECT COUNT (*) first_table FROM id = 89;
