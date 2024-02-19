@@ -8,10 +8,12 @@ const myObject = {
 };
 
 console.log(myObject);
-// Increment the value
+
 myObject.incr();
-console.log(myObject); // Should show value: 13
+console.log(myObject);
+
 myObject.incr();
-console.log(myObject); // Should show value: 14
+console.log(myObject);
+
 myObject.incr();
-console.log(myObject); // Should show value: 15
+console.log(myObject);
