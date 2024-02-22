@@ -21,16 +21,13 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306,
                          user=username, passwd=password, db=database)
 
-    # Create a cursor object
     cur = db.cursor()
 
-    # Execute the SQL query
-    query = ("SELECT * FROM states WHERE BINARY LIKE name %s
+    query = ("SELECT * FROM states WHERE BINARY name LIKE %s
     ORDER BY id ASC".format(state_name)")
 
     cur.execute(query)
 
-    # Fetch all results
     states = cur.fetchall()
 
     for state in states:
