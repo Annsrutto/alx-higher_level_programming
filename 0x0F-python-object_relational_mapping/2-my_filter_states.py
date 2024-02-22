@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-"""A script that lists all states with names starting with
-'N' from the database hbtn_0e_0_usa."""
-
+"""
+Takes in an argument and displays all values in the states table
+where name matches the argument.
+"""
 import MySQLdb
 import sys
 
@@ -12,26 +13,28 @@ if __name__ == "__main__":
               .format(sys.argv[0]))
         sys.exit(1)
 
-    username = sys.argv[1]
-    password = sys.argv[2]
     database = sys.argv[3]
+    user = sys.argv[1]
+    password = sys.argv[2]
     state_name = sys.argv[4]
 
-    # Connect to the MySQL server
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=username, passwd=password, db=database)
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=user,
+        passwd=password,
+        db=database
+    )
 
-    cur = db.cursor()
+    cursor = db.cursor()
 
-    query = ("SELECT * FROM states WHERE BINARY name LIKE %s
-    ORDER BY id ASC".format(state_name)")
+    query = "SELECT * FROM states WHERE BINARY name LIKE %s ORDER BY id ASC"
+    cursor.execute(query, (state_name,))
 
-    cur.execute(query)
+    rows = cursor.fetchall()
 
-    states = cur.fetchall()
+    for row in rows:
+        print(row)
 
-    for state in states:
-        print(state)
-
-    cur.close()
+    cursor.close()
     db.close()
