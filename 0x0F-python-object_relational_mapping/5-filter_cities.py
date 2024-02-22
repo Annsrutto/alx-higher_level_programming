@@ -7,6 +7,12 @@ import sys
 
 
 def main():
+        if len(sys.argv) == 5:
+        username, password, database, state_name = sys.argv[1], sys.argv[2],
+        sys.argv[3], sys.argv[4]
+    else:
+        print("Usage: ./script.py <mysql username> <mysql password> <database name> <state name>")
+        return
 
     username, password, database = sys.argv[1],
     sys.argv[2], sys.argv[3]
@@ -23,10 +29,9 @@ def main():
     WHERE states.name = %s
     ORDER BY cities.id ASC
     """
-
     cur.execute(query, (state_name,))
 
-    cities = cur.fetchall()
+    rows = cur.fetchall()
 
     print(", ".join(city[0] for city in cities))
 
