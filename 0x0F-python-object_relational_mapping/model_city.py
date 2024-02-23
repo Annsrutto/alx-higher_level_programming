@@ -9,7 +9,7 @@ Base = declarative_base()
 
 
 class City(Base):
-    """Represents a city for a MySQL database."""
+    """Class City representation"""
 
     __tablename__ = 'cities'
     id = Column(Integer, primary_key=True, nullable=False, unique=True,)
