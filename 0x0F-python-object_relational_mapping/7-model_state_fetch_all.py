@@ -11,8 +11,8 @@ from model_state import Base, State
 if __name__ == "__main__":
     username, password, database = sys.argv[1:4]
 
-    engine = create_engine(f'mysql+mysqldb: // {username}: {password}
-                           @localhost/{database}', pool_pre_ping=True)
+    engine = create_engine(f'mysql+mysqldb: // {username}: {password}\
+                           @localhost/{database}')
 
     Base.metadata.bind = engine
 
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     session = DBSession()
 
     states = session.query(State).order_by(State.id.asc()).all()
-    
+
     for state in states:
         print(f"{state.id}: {state.name}")
 
