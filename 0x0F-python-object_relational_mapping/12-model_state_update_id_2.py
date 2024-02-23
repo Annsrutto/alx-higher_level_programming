@@ -24,8 +24,7 @@ if __name__ == "__main__":
     if state_to_update:
         state_to_update.name = "New Mexico"
         session.commit()
-        print("State updated successfully")
     else:
-        print("State with id 2 not found")
+        print("State with id=2 not found")
 
     session.close()
