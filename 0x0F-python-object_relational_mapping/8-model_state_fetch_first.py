@@ -16,7 +16,6 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Retrieve the first State object
     first_state = session.query(State).order_by(State.id).first()
 
     if first_state:
