@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines class City which links to the MySQL table states."""
 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from model_state import Base, State
 
 
