@@ -1,6 +1,25 @@
 #!/bin/bash
-# This script takes a URL as input, sends a request using curl, and displays the size of the response body in bytes.
 
-URL=$1
-SIZE=$(curl -sI "$URL" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
-echo "$SIZE"
+# Get the URL from the command line argument
+url="$1"
+
+# Check if URL is provided
+if [ -z "$url" ]; then
+  echo "Error: Please provide a URL as an argument."
+  exit 1
+fi
+
+# Send request using curl in silent mode and capture response body
+response=$(curl -s "$url")
+
+# Get body size using wc -l (word count)
+size=$(echo "$response" | wc -l)
+
+# Display the size in bytes, handling potential errors
+if [ $? -eq 0 ]; then
+  echo "Size: $size bytes"
+else
+  echo "Error: Failed to retrieve response from $url."
+  exit 1
+fi
+
