@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -z "$PYFILE" ]; then
+    echo "The PYFILE environment variable is not set."
+    exit 1
+fi
+
+
+python3 -m compileall -b $PYFILE
+
+
+compiled_path="__pycache__/${PYFILE%%.py}.*.pyc"
+
+if [ -f $compiled_path ]; then
+
+    mv $compiled_path "${PYFILE}c"
+    echo "Compilation of $PYFILE completed."
+else
+    echo "Compilation failed or compiled file not found."
+    exit 1
+fi
+
+
+rm -rf __pycache__
